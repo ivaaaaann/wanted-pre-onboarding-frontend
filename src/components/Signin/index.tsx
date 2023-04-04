@@ -1,22 +1,18 @@
-import useSignup from "../../hooks/auth/useSignup";
+import useSignin from "../../hooks/auth/useSignin";
 import useValidation from "../../hooks/util/useValidation";
 import Button from "../common/Button";
 import TextInput from "../common/TextInput";
 import * as S from "./style";
 import { useNavigate } from "react-router-dom";
 
-const Signup = () => {
+const Signin = () => {
   const navigate = useNavigate();
 
-  const { signupData, onChangeData, onSubmitData } = useSignup();
+  const { signinData, onChangeData, onSubmitData } = useSignin();
 
   const { isValid, validator } = useValidation();
 
-  validator([
-    signupData.email !== "" && signupData.password !== "",
-    signupData.email.includes("@"),
-    signupData.password.length >= 8,
-  ]);
+  validator([signinData.email !== "" && signinData.password !== ""]);
 
   return (
     <S.Container>
@@ -27,7 +23,7 @@ const Signup = () => {
             placeholder="이메일을 입력해주세요"
             data-testid="email-input"
             name="email"
-            value={signupData.email}
+            value={signinData.email}
             onChange={onChangeData}
           />
         </TextInput.LabelWrap>
@@ -38,26 +34,26 @@ const Signup = () => {
             data-testid="password-input"
             type="password"
             name="password"
-            value={signupData.password}
+            value={signinData.password}
             onChange={onChangeData}
           />
         </TextInput.LabelWrap>
         <S.GuideText>
-          계정이 있으신가요?
-          <strong onClick={() => navigate("/signin")}>로그인</strong>
+          계정이 없으신가요?
+          <strong onClick={() => navigate("/signup")}>회원가입</strong>
         </S.GuideText>
         <Button
           buttonType="SUBMIT"
           customStyle={{ width: 360, marginTop: 30 }}
-          data-testid="signup-button"
+          data-testid="signin-button"
           disabled={!isValid}
           onClick={onSubmitData}
         >
-          회원가입
+          로그인
         </Button>
       </S.Wrap>
     </S.Container>
   );
 };
 
-export default Signup;
+export default Signin;

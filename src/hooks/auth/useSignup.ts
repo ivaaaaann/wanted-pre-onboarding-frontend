@@ -22,9 +22,11 @@ const useSignup = () => {
 
       await AuthRepositoryImpl.postSignup({ email, password });
 
+      window.alert("회원가입 성공");
+
       navigate("/signin");
     } catch (error) {
-      console.log("에러가 발생하였습니다.");
+      window.alert("에러가 발생하였습니다.");
     }
   };
 
