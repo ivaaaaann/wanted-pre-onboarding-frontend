@@ -8,7 +8,12 @@ const Button = ({
   ...attr
 }: ButtonProps) => {
   return (
-    <S.Button style={{ ...customStyle }} buttonType={buttonType} {...attr}>
+    <S.Button
+      style={{ ...customStyle }}
+      buttonType={buttonType}
+      {...attr}
+      disabled={attr.disabled}
+    >
       {children}
     </S.Button>
   );
