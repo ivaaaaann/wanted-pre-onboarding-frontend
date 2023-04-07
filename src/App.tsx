@@ -6,6 +6,7 @@ function App() {
   return (
     <Providers>
       <Router />
+      <div id="modal" />
     </Providers>
   );
 }
