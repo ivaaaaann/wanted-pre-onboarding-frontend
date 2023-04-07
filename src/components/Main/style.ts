@@ -13,13 +13,8 @@ export const Wrap = styled.div`
   height: 100%;
   display: flex;
   flex-direction: column;
-  overflow-y: scroll;
   padding: 50px 0px;
   box-sizing: border-box;
-
-  ::-webkit-scrollbar {
-    display: none;
-  }
 `;
 
 export const TopWrap = styled.div`

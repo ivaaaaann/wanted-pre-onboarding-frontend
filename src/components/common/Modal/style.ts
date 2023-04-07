@@ -48,22 +48,12 @@ export const ButtonContainer = styled.div`
   }
 
   .submit {
-    border: 1px solid ${palette.main};
-    color: ${palette.main};
-
-    &:hover {
-      background-color: ${palette.main};
-      color: white;
-    }
+    background-color: ${palette.main};
+    color: white;
   }
 
   .cancel {
     border: 1px solid ${palette.gray[200]};
     color: ${palette.gray[200]};
-
-    &:hover {
-      background-color: ${palette.gray[200]};
-      color: white;
-    }
   }
 `;
