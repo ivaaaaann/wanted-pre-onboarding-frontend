@@ -1,7 +1,7 @@
 import styled, { css } from "styled-components";
 import { palette } from "../../../styles/palette";
 
-export const Container = styled.div`
+export const Container = styled.li`
   display: flex;
   align-items: center;
   column-gap: 10px;
