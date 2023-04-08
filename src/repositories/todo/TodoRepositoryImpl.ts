@@ -1,6 +1,11 @@
 import { customAxios } from "../../libs/axios/customAxios";
 import { Todo } from "../../types/todo/todo.type";
-import { postTodoParam, putTodoParam, TodoRepository } from "./TodoRepository";
+import {
+  deleteTodoParam,
+  postTodoParam,
+  putTodoParam,
+  TodoRepository,
+} from "./TodoRepository";
 
 class TodoRepositoryImpl implements TodoRepository {
   public async getTodos(): Promise<Todo[]> {
@@ -23,6 +28,11 @@ class TodoRepositoryImpl implements TodoRepository {
       isCompleted,
     });
 
+    return data;
+  }
+
+  public async deleteTodo({ todoId }: deleteTodoParam): Promise<void> {
+    const { data } = await customAxios.delete(`/todos/${todoId}`);
     return data;
   }
 }

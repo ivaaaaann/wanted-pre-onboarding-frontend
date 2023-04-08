@@ -52,3 +52,27 @@ export const Content = styled.p<{ checked: boolean }>`
       color: ${palette.gray[300]};
     `}
 `;
+
+export const ButtonWrap = styled.div`
+  display: flex;
+  align-items: center;
+  column-gap: 5px;
+`;
+
+export const Button = styled.button`
+  min-width: 35px;
+  height: 35px;
+  border-radius: 100%;
+  background-color: white;
+  border: 0px;
+  font-size: 14px;
+  color: black;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  &:hover {
+    filter: brightness(80%);
+  }
+`;
