@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import useRecoilState from "../../libs/recoil/useRecoilState";
 import TodoRepositoryImpl from "../../repositories/todo/TodoRepositoryImpl";
 import { todosAtom } from "../../stores/todo.store";
