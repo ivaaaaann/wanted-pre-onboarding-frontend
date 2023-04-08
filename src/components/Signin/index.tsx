@@ -30,7 +30,7 @@ const Signin = () => {
         <TextInput.LabelWrap>
           <TextInput.Label>비밀번호</TextInput.Label>
           <TextInput
-            placeholder="이메일을 입력해주세요"
+            placeholder="비밀번호를 입력해주세요"
             data-testid="password-input"
             type="password"
             name="password"

@@ -5,8 +5,8 @@ import {
 } from "./types";
 import * as S from "./style";
 
-const TextInput = ({ ...attr }: TextInputProps) => {
-  return <S.Input {...attr} />;
+const TextInput = ({ customStyle, ...attr }: TextInputProps) => {
+  return <S.Input style={{...customStyle}} {...attr} />;
 };
 
 const TextInputLabelWrap = ({
