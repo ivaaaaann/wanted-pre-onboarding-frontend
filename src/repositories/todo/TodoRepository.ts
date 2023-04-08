@@ -5,7 +5,7 @@ export interface TodoRepository {
 
   postTodo({ todo }: postTodoParam): Promise<Todo>;
 
-  putTodo({ todo, isCompleted, id }: putTodoParam): Promise<Todo>;
+  putTodo({ todo, isCompleted, todoId }: putTodoParam): Promise<Todo>;
 }
 
 export interface postTodoParam {
@@ -15,5 +15,5 @@ export interface postTodoParam {
 export interface putTodoParam {
   isCompleted: boolean;
   todo: string;
-  id: number;
+  todoId: number;
 }

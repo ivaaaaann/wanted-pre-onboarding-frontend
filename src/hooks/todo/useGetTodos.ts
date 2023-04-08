@@ -1,9 +1,11 @@
 import { useEffect, useState } from "react";
+import useRecoilState from "../../libs/recoil/useRecoilState";
 import TodoRepositoryImpl from "../../repositories/todo/TodoRepositoryImpl";
+import { todosAtom } from "../../stores/todo.store";
 import { Todo } from "../../types/todo/todo.type";
 
 const useGetTodos = () => {
-  const [todos, setTodos] = useState<Todo[]>([]);
+  const [, setTodos] = useRecoilState<Todo[]>(todosAtom);
 
   const request = async () => {
     try {
@@ -17,10 +19,6 @@ const useGetTodos = () => {
   useEffect(() => {
     request();
   }, []);
-
-  return {
-    todos,
-  };
 };
 
 export default useGetTodos;

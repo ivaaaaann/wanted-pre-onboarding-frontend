@@ -1,9 +1,12 @@
 import useGetTodos from "../../../hooks/todo/useGetTodos";
+import useRecoilValue from "../../../libs/recoil/useRecoilValue";
+import { todosAtom } from "../../../stores/todo.store";
 import TodoItem from "../TodoItem";
 import * as S from "./style";
 
 const TodoList = () => {
-  const { todos } = useGetTodos();
+  useGetTodos();
+  const todos = useRecoilValue(todosAtom);
 
   return (
     <S.Container>

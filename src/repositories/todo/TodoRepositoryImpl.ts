@@ -13,8 +13,12 @@ class TodoRepositoryImpl implements TodoRepository {
     return data;
   }
 
-  public async putTodo({ todo, isCompleted, id }: putTodoParam): Promise<Todo> {
-    const { data } = await customAxios.put(`/todos/${id}`, {
+  public async putTodo({
+    todo,
+    isCompleted,
+    todoId,
+  }: putTodoParam): Promise<Todo> {
+    const { data } = await customAxios.put(`/todos/${todoId}`, {
       todo,
       isCompleted,
     });
