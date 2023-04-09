@@ -12,7 +12,11 @@ const Signin = () => {
 
   const { isValid, validator } = useValidation();
 
-  validator([signinData.email !== "" && signinData.password !== ""]);
+  validator([
+    signinData.email !== "" && signinData.password !== "",
+    signinData.email.includes("@"),
+    signinData.password.length >= 8,
+  ]);
 
   return (
     <S.Container>

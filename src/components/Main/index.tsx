@@ -1,4 +1,4 @@
-import { Suspense, useState } from "react";
+import { Suspense } from "react";
 import * as S from "./style";
 import { BsPlus } from "@react-icons/all-files/bs/BsPlus";
 import TodoList from "./TodoList";
