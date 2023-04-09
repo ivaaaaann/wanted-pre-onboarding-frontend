@@ -10,9 +10,7 @@ const Signin = () => {
 
   const { signinData, onChangeData, onSubmitData } = useSignin();
 
-  const { isValid, validator } = useValidation();
-
-  validator([
+  const { isValid } = useValidation([
     signinData.email !== "" && signinData.password !== "",
     signinData.email.includes("@"),
     signinData.password.length >= 8,

@@ -10,9 +10,7 @@ const Signup = () => {
 
   const { signupData, onChangeData, onSubmitData } = useSignup();
 
-  const { isValid, validator } = useValidation();
-
-  validator([
+  const { isValid } = useValidation([
     signupData.email !== "" && signupData.password !== "",
     signupData.email.includes("@"),
     signupData.password.length >= 8,
