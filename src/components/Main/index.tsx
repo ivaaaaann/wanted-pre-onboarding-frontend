@@ -3,10 +3,15 @@ import * as S from "./style";
 import { BsPlus } from "@react-icons/all-files/bs/BsPlus";
 import TodoList from "./TodoList";
 import ErrorBoundary from "../common/ErrorBoundary";
-import TodoCreateModal from "./TodoCreatetModal";
+import TodoCreateModal from "./TodoCreateModal";
+import { useNavigate, useParams } from "react-router-dom";
+import TodoModifyModal from "./TodoModifyModal";
 
 const Main = () => {
   const [isTodoInsertModalOpen, setIsTodoInsertModalOpen] = useState(false);
+
+  const navigate = useNavigate();
+  const { todoid } = useParams();
 
   return (
     <>
@@ -29,6 +34,7 @@ const Main = () => {
         isOpen={isTodoInsertModalOpen}
         onClose={() => setIsTodoInsertModalOpen(false)}
       />
+      <TodoModifyModal isOpen={!!todoid} onClose={() => navigate("/todo")} />
     </>
   );
 };
