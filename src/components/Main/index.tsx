@@ -10,6 +10,8 @@ import useRecoilState from "../../libs/recoil/useRecoilState";
 import { isCreateTodoModalOpenAtom } from "../../stores/client/main.store";
 
 const Main = () => {
+  const date = new Date();
+
   const [isTodoInsertModalOpen, setIsTodoInsertModalOpen] = useRecoilState(
     isCreateTodoModalOpenAtom
   );
@@ -22,7 +24,9 @@ const Main = () => {
       <S.Container>
         <S.Wrap>
           <S.TopWrap>
-            <S.Date>Wednesday, 22 Nov</S.Date>
+            <S.Date>{`${date.getFullYear()}년 ${
+              date.getMonth() + 1
+            }월 ${date.getDate()}일`}</S.Date>
             <S.AddButton onClick={() => setIsTodoInsertModalOpen(true)}>
               <BsPlus />
             </S.AddButton>
