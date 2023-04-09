@@ -50,6 +50,7 @@ export const ButtonContainer = styled.div`
   .submit {
     background-color: ${palette.main};
     color: white;
+    border: 0px;
   }
 
   .cancel {

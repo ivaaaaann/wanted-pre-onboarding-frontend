@@ -8,7 +8,7 @@ interface Props {
   onClose: () => void;
 }
 
-const TodoInsertModal = ({ isOpen, onClose }: Props) => {
+const TodoCreateModal = ({ isOpen, onClose }: Props) => {
   const { content, onChangeContent, onSubmitTodo } = useCreateTodo();
 
   const { isValid, validator } = useValidation();
@@ -50,4 +50,4 @@ const TodoInsertModal = ({ isOpen, onClose }: Props) => {
   );
 };
 
-export default TodoInsertModal;
+export default TodoCreateModal;

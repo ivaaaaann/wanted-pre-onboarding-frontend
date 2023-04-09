@@ -1,15 +1,17 @@
-import { useEffect, useState } from "react";
+import { ChangeEvent, useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import useRecoilState from "../../libs/recoil/useRecoilState";
 import TodoRepositoryImpl from "../../repositories/todo/TodoRepositoryImpl";
 import { todosAtom } from "../../stores/server/todo.store";
-import { Todo } from "../../types/todo/todo.type";
 
 interface Props {
   todoId: number;
 }
 
-const useChangeTodoCheck = ({ todoId }: Props) => {
-  const [todos, setTodos] = useRecoilState<Todo[]>(todosAtom);
+const useModifyTodo = ({ todoId }: Props) => {
+  const navigate = useNavigate();
+
+  const [todos, setTodos] = useRecoilState(todosAtom);
   const [changeTodoIdx, setChangeTodoIdx] = useState(-1);
   const [changeTodo, setChangeTodo] = useState({
     todo: "",
@@ -26,28 +28,32 @@ const useChangeTodoCheck = ({ todoId }: Props) => {
     }
   }, [todoId, todos]);
 
-  const onToggleCheck = async () => {
+  const onChangeContent = (e: ChangeEvent<HTMLInputElement>) => {
+    setChangeTodo((prev) => ({ ...prev, todo: e.target.value }));
+  };
+
+  const onSubmitTodo = async () => {
     const { todo, isCompleted } = changeTodo;
 
-    if (changeTodoIdx === -1) {
+    if (todo === "") {
       return;
     }
 
     try {
       const data = await TodoRepositoryImpl.putTodo({
-        todoId,
         todo,
-        isCompleted: !isCompleted,
+        isCompleted,
+        todoId,
       });
-      setChangeTodo((prev) => ({ ...prev, isCompleted: data.isCompleted }));
 
       const copyTodos = todos;
       copyTodos.splice(changeTodoIdx, 1, data);
       setTodos(copyTodos);
+      navigate("/todo");
     } catch (error) {}
   };
 
-  return { onToggleCheck };
+  return { changeTodo, onChangeContent, onSubmitTodo };
 };
 
-export default useChangeTodoCheck;
+export default useModifyTodo;
