@@ -24,7 +24,7 @@ const TodoModifyModal = ({ isOpen, onClose }: Props) => {
             <TextInput.Label>내용</TextInput.Label>
             <TextInput
               value={changeTodo.todo}
-              data-testid="new-todo-input"
+              data-testid="modify-input"
               autoFocus
               customStyle={{ width: "100%" }}
               placeholder="내용을 입력해주세요"
