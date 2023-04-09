@@ -11,9 +11,7 @@ interface Props {
 const TodoCreateModal = ({ isOpen, onClose }: Props) => {
   const { content, onChangeContent, onSubmitTodo } = useCreateTodo();
 
-  const { isValid, validator } = useValidation();
-
-  validator([content !== ""]);
+  const { isValid } = useValidation([content !== ""]);
 
   return (
     <>

@@ -1,13 +1,13 @@
-import { useRef } from "react";
+import { useEffect, useState } from "react";
 
-const useValidation = () => {
-  const isValid = useRef<boolean>(false);
+const useValidation = (conditions: boolean[]) => {
+  const [isValid, setIsValid] = useState(false);
 
-  const validator = (conditions: boolean[]): void => {
-    isValid.current = conditions.every((condition) => condition);
-  };
+  useEffect(() => {
+    setIsValid(conditions.every((condition) => condition));
+  }, [conditions]);
 
-  return { isValid: isValid.current, validator };
+  return { isValid };
 };
 
 export default useValidation;
