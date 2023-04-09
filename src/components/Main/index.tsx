@@ -6,9 +6,13 @@ import ErrorBoundary from "../common/ErrorBoundary";
 import TodoCreateModal from "./TodoCreateModal";
 import { useNavigate, useParams } from "react-router-dom";
 import TodoModifyModal from "./TodoModifyModal";
+import useRecoilState from "../../libs/recoil/useRecoilState";
+import { isCreateTodoModalOpenAtom } from "../../stores/client/main.store";
 
 const Main = () => {
-  const [isTodoInsertModalOpen, setIsTodoInsertModalOpen] = useState(false);
+  const [isTodoInsertModalOpen, setIsTodoInsertModalOpen] = useRecoilState(
+    isCreateTodoModalOpenAtom
+  );
 
   const navigate = useNavigate();
   const { todoid } = useParams();

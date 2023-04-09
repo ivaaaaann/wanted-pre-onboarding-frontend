@@ -1,6 +1,6 @@
 import useRecoilState from "../../libs/recoil/useRecoilState";
 import TodoRepositoryImpl from "../../repositories/todo/TodoRepositoryImpl";
-import { todosAtom } from "../../stores/todo.store";
+import { todosAtom } from "../../stores/server/todo.store";
 
 interface Props {
   todoId: number;

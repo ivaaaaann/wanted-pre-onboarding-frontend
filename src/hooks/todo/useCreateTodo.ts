@@ -1,10 +1,14 @@
 import React, { useState } from "react";
 import useRecoilState from "../../libs/recoil/useRecoilState";
 import TodoRepositoryImpl from "../../repositories/todo/TodoRepositoryImpl";
-import { todosAtom } from "../../stores/todo.store";
+import { isCreateTodoModalOpenAtom } from "../../stores/client/main.store";
+import { todosAtom } from "../../stores/server/todo.store";
 
 const useCreateTodo = () => {
   const [todos, setTodos] = useRecoilState(todosAtom);
+  const [, setIsTodoInsertModalOpen] = useRecoilState(
+    isCreateTodoModalOpenAtom
+  );
 
   const [content, setContent] = useState("");
 
@@ -17,6 +21,7 @@ const useCreateTodo = () => {
       const data = await TodoRepositoryImpl.postTodo({ todo: content });
       setContent("");
       setTodos([...todos, data]);
+      setIsTodoInsertModalOpen(false);
     } catch (error) {
       window.alert("에러가 발생하였습니다.");
     }
